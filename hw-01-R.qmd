@@ -1,0 +1,53 @@
+---
+title: "HW 01 - Introduction"
+author: "Insert your name here"
+format: gfm
+---
+
+## Load packages and data
+
+```{r load-packages-and-data, message = FALSE}
+library(tidyverse)
+profiles <- read_csv("data/ourdatascienceprofiles.csv")
+```
+
+## My data science profile
+
+```{r my-data-science-profile}
+# Exercise 1: Change this to show your profile, then remove this comment line
+
+myname <- "Jan Lorenz"
+profiles |> 
+  pivot_longer(`Social Science`:`Machine Learning`, names_to = "Dimension") |> 
+  mutate(Dimension =  factor(Dimension, levels = rev(c("Social Science", 
+                                                       "Business", 
+                                                       "Data Visualization and Communication",
+                                                       "Statistics", 
+                                                       "Mathematics", 
+                                                       "Programming", 
+                                                       "Machine Learning")))) |> 
+  filter(Name == myname) |> 
+  ggplot(aes(Dimension, value)) + 
+  geom_bar(stat = "identity") +
+  coord_flip() + 
+  labs(title = myname)
+```
+
+Remove this text and write text for Exercise 2. 
+
+## The most and least experience in the group
+
+```{r mean-dimension-values}
+# Write (or copy) the code to compute the mean dimension values here and remove this line.
+```
+
+The dimension with the most experience is ...
+The dimension with the least experience is ...
+
+## Operating Systems in our group
+
+```{r operating-systems}
+# Write (or copy) the code to show the counts of the operating systems here and remove this line.
+```
+
+Remove this text and write you answer to Exercise 4. 
